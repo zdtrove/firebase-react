@@ -9,8 +9,9 @@ import {
 	Button,
 	CircularProgress
 } from '@material-ui/core';
-import axios from 'axios';
 import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {signupUser} from '../redux/actions/userActions';
 
 
 const styles = theme => ({
@@ -25,10 +26,15 @@ class Signup extends React.Component {
 			password: '',
 			confirmPassword: '',
 			handle: '',
-			loading: false,
 			errors: {}
 		}
 	}
+
+	static getDerivedStateFromProps(nextProps, prevState){
+		if(nextProps.UI.errors){
+		  return { errors: nextProps.UI.errors};
+	   } else return null;
+ 	}
 
 	handleSubmit = event => {
 		event.preventDefault();
@@ -41,21 +47,7 @@ class Signup extends React.Component {
 			confirmPassword: this.state.confirmPassword,
 			handle: this.state.handle
 		}
-		axios.post('/signup', newUserData)
-		.then(res => {
-			console.log(res.data);
-			localStorage.setItem('FBIdToken', `Bearer ${res.data.token}`);
-			this.setState({
-				loading: false
-			});
-			this.props.history.push('/');
-		})
-		.catch(err => {
-			this.setState({
-				errors: err.response.data,
-				loading: false
-			});
-		});
+		this.props.signupUser(newUserData, this.props.history);
 	}
 
 	handleChange = event => {
@@ -65,8 +57,8 @@ class Signup extends React.Component {
 	}
 
 	render() {
-		const {classes} = this.props;
-		const {errors, loading} = this.state;
+		const {classes, UI: {loading}} = this.props;
+		const {errors} = this.state;
 		return (
 			<Grid container className={classes.form}>
 				<Grid item sm />
@@ -147,7 +139,15 @@ class Signup extends React.Component {
 }
 
 Signup.propTypes = {
-	classes: PropTypes.object.isRequired
+	classes: PropTypes.object.isRequired,
+	user: PropTypes.object.isRequired,
+	UI: PropTypes.object.isRequired,
+	signupUser: PropTypes.func.isRequired
 }
 
-export default withStyles(styles)(Signup);
+const mapStateToProps = state => ({
+	user: state.user,
+	UI: state.UI
+});
+
+export default connect(mapStateToProps, {signupUser})(withStyles(styles)(Signup));
