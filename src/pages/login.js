@@ -9,7 +9,6 @@ import {
 	Button,
 	CircularProgress
 } from '@material-ui/core';
-import axios from 'axios';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {loginUser} from '../redux/actions/userActions';
