@@ -1,12 +1,16 @@
 import React from 'react';
-import {AppBar, Toolbar, Button} from '@material-ui/core';
+import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
-import PropTypes from 'prop-types';
-import MyButton from '../util/MyButton';
+import {
+	AppBar, 
+	Toolbar, 
+	Button
+} from '@material-ui/core';
+import MyButton from '../../util/MyButton';
 import HomeIcon from '@material-ui/icons/Home';
-import Notifications from '@material-ui/icons/Notifications';
-import PostScream from './PostScream';
+import PostScream from '../scream/PostScream';
+import Notifications from './Notifications';
 
 class Navbar extends React.Component {
  	render() {
@@ -22,9 +26,7 @@ class Navbar extends React.Component {
 									<HomeIcon />
 								</MyButton>
 							</Link>
-							<MyButton tip="Notifications">
-								<Notifications />
-							</MyButton>
+							<Notifications />
 						</>
 					 ) : (
 						 <>

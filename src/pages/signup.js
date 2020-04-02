@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
 import AppIcon from '../images/icon.png';
 import {withStyles} from '@material-ui/core/styles';
 import {
@@ -9,10 +11,7 @@ import {
 	Button,
 	CircularProgress
 } from '@material-ui/core';
-import {Link} from 'react-router-dom';
-import {connect} from 'react-redux';
 import {signupUser} from '../redux/actions/userActions';
-
 
 const styles = theme => ({
 	...theme.globalStyles

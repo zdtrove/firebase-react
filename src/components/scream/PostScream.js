@@ -1,12 +1,22 @@
 import React from 'react';
-import {withStyles} from '@material-ui/core/styles';
-import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import {postScream, clearErrors} from '../redux/actions/dataActions';
-import MyButton from '../util/MyButton';
-import AddIcon from '@material-ui/icons/Add';
-import CloseIcon from '@material-ui/icons/Close';
-import {Button, Dialog, DialogTitle, DialogContent, DialogActions, CircularProgress, TextField} from '@material-ui/core';
+import {connect} from 'react-redux';
+import {withStyles} from '@material-ui/core/styles';
+import {
+    Button, 
+    Dialog, 
+    DialogTitle, 
+    DialogContent, 
+    DialogActions, 
+    CircularProgress, 
+    TextField
+} from '@material-ui/core';
+import {
+    Add as AddIcon,
+    Close as CloseIcon
+} from '@material-ui/icons';
+import {postScream, clearErrors} from '../../redux/actions/dataActions';
+import MyButton from '../../util/MyButton';
 
 const styles = theme => ({
     ...theme.globalStyles,
@@ -67,7 +77,6 @@ class PostScream extends React.Component {
         return null;
     }
     render() {
-        console.log('RENDER');
         const {errors} = this.state;
         const {classes, UI: {loading}} = this.props;
         return <>

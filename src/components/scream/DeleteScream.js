@@ -1,11 +1,16 @@
 import React from 'react';
-import {withStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
-import MyButton from '../util/MyButton';
-import {Button, Dialog, DialogTitle, DialogActions} from '@material-ui/core';
-import {DeleteOutline} from '@material-ui/icons';
 import {connect} from 'react-redux';
-import {deleteScream} from '../redux/actions/dataActions';
+import {withStyles} from '@material-ui/core/styles';
+import {
+    Button, 
+    Dialog, 
+    DialogTitle, 
+    DialogActions
+} from '@material-ui/core';
+import MyButton from '../../util/MyButton';
+import {DeleteOutline} from '@material-ui/icons';
+import {deleteScream} from '../../redux/actions/dataActions';
 
 const styles = {
     deleteButton: {

@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 import {withStyles} from '@material-ui/core/styles';
-import { connect } from 'react-redux';
-import {editUserDetails} from '../redux/actions/userActions';
-import {Dialog, DialogTitle, DialogContent, DialogActions, Button, TextField} from '@material-ui/core';
-import EditIcon from '@material-ui/icons/Edit';
-import MyButton from '../util/MyButton';
+import {
+    Dialog, 
+    DialogTitle, 
+    DialogContent, 
+    DialogActions, 
+    Button, 
+    TextField
+} from '@material-ui/core';
+import {Edit as EditIcon} from '@material-ui/icons';
+import {editUserDetails} from '../../redux/actions/userActions';
+import MyButton from '../../util/MyButton';
 
 const styles = theme => ({
     ...theme.globalStyles,
